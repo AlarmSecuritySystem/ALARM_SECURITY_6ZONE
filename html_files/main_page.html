@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="../manifest/manifest.json">
+    <title>ALARM_SECURITY_6ZONE</title>
+    <style>
+        @font-face {
+            font-family: 'iranSans';
+            src: url('../fonts/sans.ttf') format('truetype');
+            /* You can also include other font formats like woff, woff2, etc. for better browser compatibility */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+            /*background-image: url("../pictures/background.jpg");*/
+        }
+        .coordinator-layout {
+            position: relative;
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .linear-layout-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+        }
+        .linear-layout-horizontal {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+        }
+        .card {
+            /*width: 185px;*/
+            max-height: 120px;
+            /*background-color: #d3d3d3;*/
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+        /*the changes on image of card view should be applied here*/
+        .card img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-top: 30px;
+        }
+        /*the changes on contents of card view should be applied here*/
+        .card .card-content {
+            padding: 5px;
+        }
+        /*the changes on header or title of card view should be applied here*/
+        .card h2 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-style: normal;
+        }
+        /*the changes on description of card view should be applied here*/
+        .card p {
+            font-size: 11px; /* Adjust the font size to your preference */
+            margin-bottom: 30px;
+            margin-top: 0;
+            font-family: 'iranSans', sans-serif; /* Use the custom font */
+        }
+        .circle {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 1px solid #000000;
+            border-radius: 50%;
+            background-color: #ffbf00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        /*Style for the custom checkbox container*/
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+        }
+        /* Hide the default checkbox input */
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+        }
+        /* Style for the custom checkbox appearance */
+        /*.custom-checkbox .checkmark {*/
+        /*    position: absolute;*/
+        /*    top: 50%;*/
+        /*    left: 50%;*/
+        /*    transform: translate(-50%, -50%);*/
+        /*    height: 40px; !* Adjust the size of the checkbox *!*/
+        /*    width: 40px;*/
+        /*    background-image: url('../icons/ic_volume_on.PNG'); !* URL to the image for unchecked state *!*/
+        /*    background-size: cover;*/
+        /*}*/
+        /*!* Style for the checked state *!*/
+        /*.custom-checkbox input:checked + .checkmark {*/
+        /*    background-image: url('../icons/ic_silent.PNG'); !* URL to the image for checked state *!*/
+        /*}*/
+        select {
+            width: 250px;
+            padding: 8px 10px;
+            font-size: 12px;
+            font-family: 'iranSans', sans-serif; /* Use the custom font */
+            border-radius: 10px;
+            text-align: center;
+        }
+        label {
+            font-family: 'iranSans', sans-serif; /* Use the custom font */
+        }
+    </style>
+</head>
+<body>
+<div class="linear-layout-vertical">
+
+    <div class="linear-layout-horizontal" style="margin-bottom: 5px">
+        <select id="namePicker"></select>
+        <label for="namePicker" style="margin-left: 7px; margin-right: 7px;">انتخاب دستگاه</label>
+    </div>
+
+    <div class="coordinator-layout">
+        <div class="linear-layout-vertical">
+            <div class="linear-layout-horizontal">
+                <div class="card" id="cvSystemOn" style="margin: 3px; width: 185px; background-color: #a1ceec;">
+                    <img src="../icons/ic_lock.PNG" alt="icon">
+                    <div class="card-content">
+                        <p>دزدگیر فعال</p>
+                    </div>
+                </div>
+                <div class="card" id="cvSystemOff" style="margin: 3px; width: 185px; background-color: #a1ceec;">
+                    <img src="../icons/ic_unlock.PNG" alt="icon">
+                    <div class="card-content">
+                        <p>دزدگیر غیرفعال</p>
+                    </div>
+                </div>
+            </div>
+            <div class="linear-layout-horizontal">
+                <div class="card" id="cvSystemHalfOn" style="margin: 3px; width: 185px; background-color: #a1ceec;">
+                    <img src="../icons/ic_mute.PNG" alt="icon">
+                    <div class="card-content">
+                        <p>دزدگیر نیمه فعال</p>
+                    </div>
+                </div>
+                <div class="card" id="cvOpenDoor" style="margin: 3px; width: 185px; background-color: #a1ceec;">
+                    <img src="../icons/ic_unlock_door.png" alt="icon">
+                    <div class="card-content">
+                        <p>درب بازکن</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="linear-layout-horizontal">
+        <div class="card" id="cvRegisterDevice" style="margin: 3px; width: 120px; background-color: #b2a731;">
+            <img src="../icons/ic_add_call.PNG" alt="icon">
+            <div class="card-content">
+                <p>ثبت نام دستگاه</p>
+            </div>
+        </div>
+        <div class="card" id="cvChargeDevice" style="margin: 3px; width: 120px; background-color: #b2a731;">
+            <img src="../icons/ic_charge.PNG" alt="icon">
+            <div class="card-content">
+                <p>شارژ سیمکارت</p>
+            </div>
+        </div>
+        <div class="card" id="cvRemainingCharge" style="margin: 3px; width: 120px; background-color: #b2a731;">
+            <img src="../icons/ic_remain_charge.PNG" alt="icon">
+            <div class="card-content">
+                <p>باقیمانده شارژ</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="linear-layout-horizontal">
+        <div class="card" id="cvManageOutputs" style="margin: 3px; width: 120px; background-color: #b2a731;">
+            <img src="../icons/ic_control_output.png" alt="icon">
+            <div class="card-content">
+                <p>کنترل خروجی ها</p>
+            </div>
+        </div>
+        <div class="card" id="cvOutputStatus" style="margin: 3px; width: 120px; background-color: #b2a731;">
+            <img src="../icons/ic_output.png" alt="icon">
+            <div class="card-content">
+                <p>وضعیت خروجی ها</p>
+            </div>
+        </div>
+        <div class="card" id="cvStatus" style="margin: 3px; width: 120px; background-color: #b2a731;">
+            <img src="../icons/ic_status.png" alt="icon">
+            <div class="card-content">
+                <p>وضعیت دزدگیر</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="linear-layout-horizontal">
+        <div class="card" id="cvManagePassword" style="margin: 3px; width: 120px; background-color: #b2a731;">
+            <img src="../icons/ic_security.PNG" alt="icon">
+            <div class="card-content">
+                <p>مدیریت رمز عبور</p>
+            </div>
+        </div>
+        <div class="card" id="cvCall" style="margin: 3px; width: 120px; background-color: #b2a731;">
+            <img src="../icons/ic_call.PNG" alt="icon">
+            <div class="card-content">
+                <p>تماس با دستگاه</p>
+            </div>
+        </div>
+        <div class="card" id="cvExit" style="margin: 3px; width: 120px; background-color: #b2a731;">
+            <img src="../icons/ic_close.PNG" alt="icon">
+            <div class="card-content">
+                <p>خروج</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var list;
+    var selectedDevice;
+
+    const systemOnCmd = "*11";
+    const systemOffCmd = "*12";
+    const systemHalfOnCmd = "*13";
+    const openDoorCmd = "*14";
+    const chargeCmd = "charge";
+    const statusCmd = "chpp";
+    const outputStatusCmd = "chrr";
+
+    const cvSystemOn = document.getElementById("cvSystemOn");
+    const cvSystemOff = document.getElementById("cvSystemOff");
+    const cvSystemHalfOn = document.getElementById("cvSystemHalfOn");
+    const cvOpenDoor = document.getElementById("cvOpenDoor");
+    const cvRemainingCharge = document.getElementById("cvRemainingCharge");
+    const cvChargeDevice = document.getElementById("cvChargeDevice");
+    const cvStatus = document.getElementById("cvStatus");
+    const cvManagePassword = document.getElementById("cvManagePassword");
+    const cvRegisterDevice = document.getElementById("cvRegisterDevice");
+    const cvOutputStatus = document.getElementById("cvOutputStatus");
+    const cvManageOutputs = document.getElementById("cvManageOutputs");
+    const cvSettings = document.getElementById("cvSettings");
+    const cvCall = document.getElementById("cvCall");
+    const cvExit = document.getElementById("cvExit");
+    const devicePicker = document.getElementById("namePicker");
+
+    var password = localStorage.getItem("password") === null ? "" : localStorage.getItem("password");
+    var pass_enabled = localStorage.getItem("pass_enabled") === null ? "false" : localStorage.getItem("pass_enabled");
+
+    if (password !== "" && pass_enabled && getUrlParameter('data') !== "pass_ok"){
+        openPage("login_pass.html");
+    }else {
+        loadData();
+        if (list.length !== 0){ // if list isn't empty
+            for (let i = 0; i < list.length; i++) {
+                var option = document.createElement("option");
+                const simDevice = list.at(i);
+                option.text = simDevice.name;
+                option.value = simDevice.phNumber;
+                devicePicker.add(option);
+            }
+            selectedDevice = list.at(devicePicker.selectedIndex);
+        }else { // if list is empty
+            var emptyOption = document.createElement("option");
+            emptyOption.text = "هیچ دستگاهی ثبت نام نشده است";
+            emptyOption.value = "";
+            devicePicker.add(emptyOption);
+            selectedDevice = null;
+        }
+        cvSystemOn.addEventListener("click",function () {
+            if (selectedDevice !== null) {
+                var result = confirm("آیا میخواهید دزدگیر فعال گردد؟");
+                if (result) {
+                    console.log(systemOnCmd);
+                    sendSMS(selectedDevice.phNumber, systemOnCmd);
+                    alert("پیام ارسال گردید.");
+                }
+            }else {
+                alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+            }
+        });
+        cvSystemHalfOn.addEventListener("click",function () {
+            if (selectedDevice !== null) {
+                var result = confirm("آیا میخواهید دزدگیر نیمه فعال گردد؟");
+                if (result) {
+                    console.log(systemHalfOnCmd);
+                    sendSMS(selectedDevice.phNumber, systemHalfOnCmd);
+                    alert("پیام ارسال گردید.");
+                }
+            }else {
+                alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+            }
+        });
+        cvSystemOff.addEventListener("click",function () {
+            if (selectedDevice !== null) {
+                var result = confirm("آیا میخواهید دزدگیر غیرفعال گردد؟");
+                if (result) {
+                    console.log(systemOffCmd);
+                    sendSMS(selectedDevice.phNumber, systemOffCmd);
+                    alert("پیام ارسال گردید.");
+                }
+            }else {
+                alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+            }
+        });
+        cvOpenDoor.addEventListener("click",function () {
+            if (selectedDevice !== null) {
+                var result = confirm("آیا می خواهید فرمان درب بازکن دستگاه ارسال گردد؟");
+                if (result) {
+                    console.log(openDoorCmd);
+                    sendSMS(selectedDevice.phNumber, openDoorCmd);
+                    alert("پیام ارسال گردید.");
+                }
+            }else {
+                alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+            }
+        });
+        cvRemainingCharge.addEventListener("click",function () {
+            if (selectedDevice !== null) {
+                var result = confirm("آیا می خواهید از میزان باقیمانده شارژ مطلع شوید؟");
+                if (result) {
+                    console.log(chargeCmd);
+                    sendSMS(selectedDevice.phNumber, chargeCmd);
+                    alert("پیام ارسال گردید.");
+                }
+            }else {
+                alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+            }
+        });
+        cvChargeDevice.addEventListener("click",function () {
+            openPageWithData("charge_device.html");
+        });
+        cvStatus.addEventListener("click",function () {
+            if (selectedDevice !== null) {
+                var result = confirm("آیا می خواهید از وضعیت دزدگیر مطلع شوید؟");
+                if (result) {
+                    console.log(statusCmd);
+                    sendSMS(selectedDevice.phNumber, statusCmd);
+                    alert("پیام ارسال گردید.");
+                }
+            }else {
+                alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+            }
+        });
+        cvOutputStatus.addEventListener("click",function () {
+            if (selectedDevice !== null) {
+                var result = confirm("آیا می خواهید از وضعیت خروجی های دستگاه دزدگیر مطلع شوید؟");
+                if (result) {
+                    console.log(outputStatusCmd);
+                    sendSMS(selectedDevice.phNumber, outputStatusCmd);
+                    alert("پیام ارسال گردید.");
+                }
+            }else {
+                alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+            }
+        });
+        cvManageOutputs.addEventListener("click",function () {
+            openPageWithData("control_outputs.html");
+        });
+        // cvAddToHomeScreen.addEventListener('click', () => {
+        //     alert("برای انجام این کار گزینه Add to home Screen را بزنید.");
+        // });
+        cvManagePassword.addEventListener("click",function () {
+            openPage("password_settings_page.html");
+        });
+        cvRegisterDevice.addEventListener("click",function () {
+            openPage("register_device.html");
+        });
+        // cvDatasheet.addEventListener("click",function () {
+        //     window.open("../assets/datasheet.pdf", "_blank");
+        // });
+        cvSettings.addEventListener("click",function () {
+            alert("هشدار : کاربر گرامی ، ورود به گزینه تنظیمات نیازمند دانش نصب سیستم حفاظتی می باشد . لطفا درصورت نداشتن آگاهی کامل در این زمینه از ورود به این قسمت خودداری نمایید.");
+            openPageWithData("settings.html");
+        });
+        cvCall.addEventListener("click",function () {
+            if (selectedDevice !== null) {
+                window.location.href = "tel:" + selectedDevice.phNumber;
+            }else {
+                alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+            }
+        });
+        cvExit.addEventListener("click",function () {
+            window.close();
+        });
+        devicePicker.addEventListener("change",function () {
+            selectedDevice = list.at(devicePicker.selectedIndex);
+        });
+    }
+    function openPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+    function openPageWithData(pageUrl) {
+        if (selectedDevice !== null) {
+            var serializedDevice = encodeURIComponent(JSON.stringify(selectedDevice));
+            window.location.href = pageUrl + "?data=" + serializedDevice;
+        }else {
+            alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+        }
+    }
+    function sendSMS(phoneNumber,messageBody) {
+        //messageBody = "*" + messageBody + "#";
+        var encodedMessageBody = encodeURIComponent(messageBody);
+        var smsLink = 'sms:' + phoneNumber + '?body=' + encodedMessageBody;
+        window.location.href = smsLink;
+    }
+    // document.addEventListener('DOMContentLoaded', function() {// on page loads
+    // });
+    window.addEventListener('pageshow', function(event) {
+        var historyTraversal = event.persisted ||
+            (typeof window.performance != 'undefined' &&
+                window.performance.navigation.type === 2);
+        if (historyTraversal) {
+            // Reload the page
+            window.location.reload();
+        }
+    });
+    function SimDevice(name,phNumber){
+        this.name = name;
+        this.phNumber = phNumber;
+    }
+    function loadData() {
+        var storedJsonString = localStorage.getItem("devicesList");
+        list = storedJsonString === null ? [] : JSON.parse(storedJsonString);
+    }
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+</script>
+
+</body>
+</html>

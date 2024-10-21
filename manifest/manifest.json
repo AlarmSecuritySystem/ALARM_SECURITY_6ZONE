@@ -1,0 +1,16 @@
+{
+  "name": "ALARM_SECURITY_6ZONE-WEB APPLICATION",
+  "short_name": "ALARM_SECURITY_6ZONE",
+  "icons": [
+    {
+      "src": "../icons/ic_launcher.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "../html_files/main_page.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "theme_color": "#000000"
+}

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/app_styles.css">
+    <title>کنترل خروجی ها</title>
+</head>
+<body>
+
+<div class="linear-layout-vertical">
+    <div class="text-view" style="margin-bottom: 10px; color: black;" id="showSelectedDevice">null</div>
+    <div class="linear-layout-horizontal">
+        <div class="checkbox-container" id="container1" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbMom1" class="custom-checkbox">
+            <label for="chbMom1" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">لحظه ای</label>
+        </div>
+        <div class="checkbox-container" id="container2" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOff1" class="custom-checkbox">
+            <label for="chbOff1" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">خاموش</label>
+        </div>
+        <div class="checkbox-container" id="container3" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOn1" class="custom-checkbox">
+            <label for="chbOn1" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">روشن</label>
+        </div>
+        <div id="changeOut1" class="button-type0" style="width:70px;text-align: center;border: 1px solid black; margin-left: 5px; padding: 5px; border-radius: 5px;">خروجی 1</div>
+    </div>
+
+    <div class="linear-layout-horizontal">
+        <div class="checkbox-container" id="container4" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbMom2" class="custom-checkbox">
+            <label for="chbMom2" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">لحظه ای</label>
+        </div>
+        <div class="checkbox-container" id="container5" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOff2" class="custom-checkbox">
+            <label for="chbOff2" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">خاموش</label>
+        </div>
+        <div class="checkbox-container" id="container6" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOn2" class="custom-checkbox">
+            <label for="chbOn2" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">روشن</label>
+        </div>
+        <div id="changeOut2" class="button-type0" style="width:70px;text-align: center;border: 1px solid black; margin-left: 5px; padding: 5px; border-radius: 5px;">خروجی 2</div>
+    </div>
+
+    <div class="linear-layout-horizontal">
+        <div class="checkbox-container" id="container7" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbMom3" class="custom-checkbox">
+            <label for="chbMom3" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">لحظه ای</label>
+        </div>
+        <div class="checkbox-container" id="container8" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOff3" class="custom-checkbox">
+            <label for="chbOff3" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">خاموش</label>
+        </div>
+        <div class="checkbox-container" id="container9" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOn3" class="custom-checkbox">
+            <label for="chbOn3" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">روشن</label>
+        </div>
+        <div id="changeOut3" class="button-type0" style="width:70px;text-align: center;border: 1px solid black; margin-left: 5px; padding: 5px; border-radius: 5px;">خروجی 3</div>
+    </div>
+
+    <div class="linear-layout-horizontal">
+        <div class="checkbox-container" id="container10" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbMom4" class="custom-checkbox">
+            <label for="chbMom4" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">لحظه ای</label>
+        </div>
+        <div class="checkbox-container" id="container11" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOff4" class="custom-checkbox">
+            <label for="chbOff4" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">خاموش</label>
+        </div>
+        <div class="checkbox-container" id="container12" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOn4" class="custom-checkbox">
+            <label for="chbOn4" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">روشن</label>
+        </div>
+        <div id="changeOut4" class="button-type0" style="width:70px;text-align: center;border: 1px solid black; margin-left: 5px; padding: 5px; border-radius: 5px;">خروجی 4</div>
+    </div>
+
+    <div class="linear-layout-horizontal">
+        <div class="checkbox-container" id="container13" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbMom5" class="custom-checkbox">
+            <label for="chbMom5" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">لحظه ای</label>
+        </div>
+        <div class="checkbox-container" id="container14" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOff5" class="custom-checkbox">
+            <label for="chbOff5" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">خاموش</label>
+        </div>
+        <div class="checkbox-container" id="container15" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOn5" class="custom-checkbox">
+            <label for="chbOn5" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">روشن</label>
+        </div>
+        <div id="changeOut5" class="button-type0" style="width:70px;text-align: center;border: 1px solid black; margin-left: 5px; padding: 5px; border-radius: 5px;">خروجی 5</div>
+    </div>
+
+    <div class="linear-layout-horizontal">
+        <div class="checkbox-container" id="container16" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbMom6" class="custom-checkbox">
+            <label for="chbMom6" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">لحظه ای</label>
+        </div>
+        <div class="checkbox-container" id="container17" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOff6" class="custom-checkbox">
+            <label for="chbOff6" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">خاموش</label>
+        </div>
+        <div class="checkbox-container" id="container18" style="border: 1px solid white; border-radius: 5px; padding: 10px 5px; cursor: pointer;">
+            <input type="checkbox" id="chbOn6" class="custom-checkbox">
+            <label for="chbOn6" class="checkbox-label" style="text-align: center; cursor: pointer; font-weight: bold;">روشن</label>
+        </div>
+        <div id="changeOut6" class="button-type0" style="width:70px;text-align: center;border: 1px solid black; margin-left: 5px; padding: 5px; border-radius: 5px;">خروجی 6</div>
+    </div>
+    <button id="bAllOff" class="button-type0">آیا همه خروجی ها خاموش شود؟</button>
+    <div class="linear-layout-horizontal" id="back_button" style="background-color: #a1ceec; border-radius: 15px; margin-top: 50px; cursor: pointer;">
+        <img src="../icons/ic_arrow_back.png" alt="back_ic" style="width: 30px; margin-right: 5px;margin-left: 5px;">
+        <div class="text-view" style="color: white; margin-right: 8px;">بازگشت</div>
+    </div>
+</div>
+
+<script>
+
+const chbMom1 = document.getElementById("chbMom1");
+const chbOff1 = document.getElementById("chbOff1");
+const chbOn1 = document.getElementById("chbOn1");
+
+const chbMom2 = document.getElementById("chbMom2");
+const chbOff2 = document.getElementById("chbOff2");
+const chbOn2 = document.getElementById("chbOn2");
+
+const chbMom3 = document.getElementById("chbMom3");
+const chbOff3 = document.getElementById("chbOff3");
+const chbOn3 = document.getElementById("chbOn3");
+
+const chbMom4 = document.getElementById("chbMom4");
+const chbOff4 = document.getElementById("chbOff4");
+const chbOn4 = document.getElementById("chbOn4");
+
+const chbMom5 = document.getElementById("chbMom5");
+const chbOff5 = document.getElementById("chbOff5");
+const chbOn5 = document.getElementById("chbOn5");
+
+const chbMom6 = document.getElementById("chbMom6");
+const chbOff6 = document.getElementById("chbOff6");
+const chbOn6 = document.getElementById("chbOn6");
+
+const changeOut1 = document.getElementById("changeOut1");
+const changeOut2 = document.getElementById("changeOut2");
+const changeOut3 = document.getElementById("changeOut3");
+const changeOut4 = document.getElementById("changeOut4");
+const changeOut5 = document.getElementById("changeOut5");
+const changeOut6 = document.getElementById("changeOut6");
+
+const showSelectedDevice = document.getElementById("showSelectedDevice");
+const backButton = document.getElementById("back_button");
+var orderCH1 = "",orderCH2 = "",orderCH3 = "",orderCH4 = "",orderCH5 = "",orderCH6 = "";
+
+var serializedDevice = getUrlParameter('data');
+if (serializedDevice === "") {
+    window.location.href = "main_page.html";
+}else {
+    var selectedDevice = JSON.parse(decodeURIComponent(serializedDevice));
+    showSelectedDevice.innerText =  selectedDevice.name + " : دستگاه انتخابی";
+
+    backButton.addEventListener("click",function () {
+        window.history.back();
+    });
+    document.getElementById("bAllOff").addEventListener("click",function () {
+        if (selectedDevice !== null) {
+            var result = confirm("آیا همه خروجی ها خاموش شوند؟");
+            if (result) {
+                console.log("chof");
+                sendSMS(selectedDevice.phNumber, "chof");
+                alert("پیام ارسال گردید.");
+            }
+        }else {
+            alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+        }
+    });
+
+    chbMom1.addEventListener("change",function () {
+        orderCH1 = "ch1m"
+        chbOn1.checked = false;
+        chbOff1.checked = false;
+    });
+    chbOn1.addEventListener("change",function () {
+        orderCH1 = "ch11"
+        chbMom1.checked = false;
+        chbOff1.checked = false;
+    });
+    chbOff1.addEventListener("change",function () {
+        orderCH1 = "ch10"
+        chbOn1.checked = false;
+        chbMom1.checked = false;
+    });
+
+    chbMom2.addEventListener("change",function () {
+        orderCH2 = "ch2m"
+        chbOn2.checked = false;
+        chbOff2.checked = false;
+    });
+    chbOn2.addEventListener("change",function () {
+        orderCH2 = "ch21"
+        chbMom2.checked = false;
+        chbOff2.checked = false;
+    });
+    chbOff2.addEventListener("change",function () {
+        orderCH2 = "ch20"
+        chbOn2.checked = false;
+        chbMom2.checked = false;
+    });
+
+    chbMom3.addEventListener("change",function () {
+        orderCH3 = "ch3m"
+        chbOn3.checked = false;
+        chbOff3.checked = false;
+    });
+    chbOn3.addEventListener("change",function () {
+        orderCH3 = "ch31"
+        chbMom3.checked = false;
+        chbOff3.checked = false;
+    });
+    chbOff3.addEventListener("change",function () {
+        orderCH3 = "ch30"
+        chbOn3.checked = false;
+        chbMom3.checked = false;
+    });
+
+    chbMom4.addEventListener("change",function () {
+        orderCH4 = "ch4m"
+        chbOn4.checked = false;
+        chbOff4.checked = false;
+    });
+    chbOn4.addEventListener("change",function () {
+        orderCH4 = "ch41"
+        chbMom4.checked = false;
+        chbOff4.checked = false;
+    });
+    chbOff4.addEventListener("change",function () {
+        orderCH4 = "ch40"
+        chbOn4.checked = false;
+        chbMom4.checked = false;
+    });
+
+    chbMom5.addEventListener("change",function () {
+        orderCH5 = "ch5m"
+        chbOn5.checked = false;
+        chbOff5.checked = false;
+    });
+    chbOn5.addEventListener("change",function () {
+        orderCH5 = "ch51"
+        chbMom5.checked = false;
+        chbOff5.checked = false;
+    });
+    chbOff5.addEventListener("change",function () {
+        orderCH5 = "ch50"
+        chbOn5.checked = false;
+        chbMom5.checked = false;
+    });
+
+    chbMom6.addEventListener("change",function () {
+        orderCH6 = "ch6m"
+        chbOn6.checked = false;
+        chbOff6.checked = false;
+    });
+    chbOn6.addEventListener("change",function () {
+        orderCH6 = "ch61"
+        chbMom6.checked = false;
+        chbOff6.checked = false;
+    });
+    chbOff6.addEventListener("change",function () {
+        orderCH6 = "ch60"
+        chbOn6.checked = false;
+        chbMom6.checked = false;
+    });
+
+    changeOut1.addEventListener("click",function () {
+        if (selectedDevice !== null) {
+            if (orderCH1 === ""){
+                alert("ابتدا یکی از حالت ها را برای خروجی 1 انتخاب نمایید!")
+            }else {
+                var result = confirm("آیا میخواهید وضعیت خروجی 1 تغییر کند؟");
+                if (result) {
+                    console.log(orderCH1);
+                    sendSMS(selectedDevice.phNumber, orderCH1);
+                }
+            }
+        }else {
+            alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+        }
+    });
+    changeOut2.addEventListener("click",function () {
+        if (selectedDevice !== null) {
+            if (orderCH2 === ""){
+                alert("ابتدا یکی از حالت ها را برای خروجی 2 انتخاب نمایید!")
+            }else {
+                var result = confirm("آیا میخواهید وضعیت خروجی 2 تغییر کند؟");
+                if (result) {
+                    console.log(orderCH2);
+                    sendSMS(selectedDevice.phNumber, orderCH2);
+                }
+            }
+        }else {
+            alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+        }
+    });
+    changeOut3.addEventListener("click",function () {
+        if (selectedDevice !== null) {
+            if (orderCH3 === ""){
+                alert("ابتدا یکی از حالت ها را برای خروجی 3 انتخاب نمایید!")
+            }else {
+                var result = confirm("آیا میخواهید وضعیت خروجی 3 تغییر کند؟");
+                if (result) {
+                    console.log(orderCH3);
+                    sendSMS(selectedDevice.phNumber, orderCH3);
+                }
+            }
+        }else {
+            alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+        }
+    });
+    changeOut4.addEventListener("click",function () {
+        if (selectedDevice !== null) {
+            if (orderCH4 === ""){
+                alert("ابتدا یکی از حالت ها را برای خروجی 4 انتخاب نمایید!")
+            }else {
+                var result = confirm("آیا میخواهید وضعیت خروجی 4 تغییر کند؟");
+                if (result) {
+                    console.log(orderCH4);
+                    sendSMS(selectedDevice.phNumber, orderCH4);
+                }
+            }
+        }else {
+            alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+        }
+    });
+    changeOut5.addEventListener("click",function () {
+        if (selectedDevice !== null) {
+            if (orderCH5 === ""){
+                alert("ابتدا یکی از حالت ها را برای خروجی 5 انتخاب نمایید!")
+            }else {
+                var result = confirm("آیا میخواهید وضعیت خروجی 5 تغییر کند؟");
+                if (result) {
+                    console.log(orderCH5);
+                    sendSMS(selectedDevice.phNumber, orderCH5);
+                }
+            }
+        }else {
+            alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+        }
+    });
+    changeOut6.addEventListener("click",function () {
+        if (selectedDevice !== null) {
+            if (orderCH6 === ""){
+                alert("ابتدا یکی از حالت ها را برای خروجی 6 انتخاب نمایید!")
+            }else {
+                var result = confirm("آیا میخواهید وضعیت خروجی 6 تغییر کند؟");
+                if (result) {
+                    console.log(orderCH6);
+                    sendSMS(selectedDevice.phNumber, orderCH6);
+                }
+            }
+        }else {
+            alert("لطفا ابتدا دستگاهی را ثبت نام کنید!");
+        }
+    });
+}
+function sendSMS(phoneNumber,messageBody) {
+    // messageBody = "*" + messageBody + "#";
+    var encodedMessageBody = encodeURIComponent(messageBody);
+    var smsLink = 'sms:' + phoneNumber + '?body=' + encodedMessageBody;
+    window.location.href = smsLink;
+}
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+function SimDevice(name,phNumber){
+    this.name = name;
+    this.phNumber = phNumber;
+}
+
+</script>
+</body>
+</html>
